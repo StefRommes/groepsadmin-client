@@ -106,7 +106,7 @@
       }
 
       $scope.data.publiekInschrijven = $scope.data.activegroup['publiek-inschrijven']
-      
+
       if (deregisterListener) {
         deregisterListener();
       }
@@ -511,10 +511,11 @@
     };
 
     $scope.opslaan = function () {
-      angular.forEach($scope.data.activegroup.groepseigenGegevens, function (gegeven) {
+      angular.forEach($scope.data.activegroup.groepseigenGegevens, function (gegeven, key) {
         if (gegeven.type !== 'lijst') {
           delete gegeven.keuzes;
         }
+        gegeven.sort = key; // De sortering die de gebruiker ziet moet behouden blijven.
       });
       $scope.saving = true;
       if ($scope.data.activegroup.facturatieLeidingCheck) {
@@ -523,7 +524,7 @@
       if ($scope.data.activegroup.facturatieLedenCheck) {
         $scope.data.activegroup.facturatieLeden = new Date()
       }
-      
+
       var promises = [
         RestService.Groep
           .update({id: $scope.data.activegroup.id, bevestiging: true}, $scope.data.activegroup)

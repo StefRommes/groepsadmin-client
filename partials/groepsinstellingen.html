@@ -261,7 +261,7 @@
                     <input type="text" class="form-control" id="_telefoon" ng-model="lokaal.telefoon" ng-disabled="!data.activegroup.kanWijzigen"/>
                   </div>
                 </div>
-             
+
                   <label class="form-group control checkbox">
                     <div class="col-xs-4 col-xxs-12 control-label">Postadres</div>
                     <div class="col-xs-8 col-xxs-12">
@@ -270,7 +270,7 @@
                       <span class="control-indicator"></span>
                     </div>
                   </label>
-             
+
                 <a href="" class="pull-right"
                    ng-click="centerMap(lokaal.positie.latitude, lokaal.positie.longitude, lokaal.id)">Toon op kaart</a>
 
@@ -332,7 +332,7 @@
           </legend>
 
           <div ng-if="data.activegroup.groepseigenGegevens" class="sortable">
-            <fieldset ng-repeat="groepseigenGegeven in data.activegroup.groepseigenGegevens | orderBy:'sort'"
+            <fieldset ng-repeat="groepseigenGegeven in data.activegroup.groepseigenGegevens"
                       ng-init="groepseigenGegeven.status != 'nieuw'?showme = false:showme = true;"
                       data-groepseigengegevenid="{{ groepseigenGegeven.id }}">
               <legend>
